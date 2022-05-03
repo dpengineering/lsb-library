@@ -49,10 +49,13 @@ void Board::checkOnOff(void (*code)()) {
 void Board::DPEADelay(float duration) {
     duration = duration * second;
     sensorVal = analogRead(sensorPin);
-    if (sensorVal <= coveredVal) {turnOffAll(); second = 0; pinsIn(); return;}
+    checkLight();
+    duration *= second;
     for (int i = 0; i < duration; i++) {
         sensorVal = analogRead(sensorPin);
-        if (sensorVal <= coveredVal) {turnOffAll(); second = 0; pinsIn(); return;}
+        checkLight();
+        duration *= second;
+        Serial.println(duration);
         delay(1);
     }
 }
@@ -60,11 +63,13 @@ void Board::DPEADelay(float duration) {
 void Board::DPEADelayMicroseconds(float duration) {
     duration *= second;
     sensorVal = analogRead(sensorPin);
-    if (sensorVal <= coveredVal) {turnOffAll(); second = 0; pinsIn(); return;}
+    checkLight();
+    duration *= second;
     for (int i = 0; i < duration / 1000; i++) {
 //        long oldTime = millis();
         sensorVal = analogRead(sensorPin);
-        if (sensorVal <= coveredVal) {turnOffAll(); second = 0; pinsIn(); return;}
+        checkLight();
+        duration *= second;
 //        Serial.println(millis() - oldTime);
         delayMicroseconds(1000);
     }
@@ -253,7 +258,7 @@ int sensorValue() {
 
 void Board::pwm(uint8_t pin, float time) {
     sensorVal = analogRead(sensorPin);
-    if (sensorVal <= coveredVal) {turnOffAll(); second = 0; pinsIn(); return;}
+    checkLight();
 
     digitalWrite(pin, HIGH);
     DPEADelayMicroseconds(time);
@@ -263,7 +268,7 @@ void Board::pwm(uint8_t pin, float time) {
 
 void Board::allPWM(int time) {
     sensorVal = analogRead(sensorPin);
-    if (sensorVal <= coveredVal) {turnOffAll(); second = 0; pinsIn(); return;}
+    checkLight();
 
     turnOnAll();
     DPEADelayMicroseconds(time);
@@ -273,7 +278,7 @@ void Board::allPWM(int time) {
 
 void Board::arrPWM(uint8_t arr[], int time, size_t arrsize) {
     sensorVal = analogRead(sensorPin);
-    if (sensorVal <= coveredVal) {turnOffAll(); second = 0; pinsIn(); return;}
+    checkLight();
 
     arrayOn(arr, arrsize);
     DPEADelayMicroseconds(time);
@@ -297,4 +302,8 @@ void Board::updateFadingStepSize(int duration) {
     float knobRatio = 750 / 768; 
     float stepsOfDuration = duration * (1 - knobRatio) / 10;
     fadingStepSize = 1 / stepsOfDuration;
+}
+
+void Board::checkLight() {
+    if (sensorVal <= coveredVal || sensorVal >= darkVal) {turnOffAll(); second = 0; pinsIn(); return;}
 }

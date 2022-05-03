@@ -67,6 +67,8 @@ private:
   float fractionOn = gammaCorrect(1);
 
   void updateFadingStepSize(int duration);
+
+  void checkLight();
 };
 
 #endif //CPP_LSBLIBRARY_H

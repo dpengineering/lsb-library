@@ -5,7 +5,7 @@
 const int coveredVal = 40;      //Change this to be the value of your sensor when it is covered
 const int darkVal = 150;        //Change this value to be the brightness of a dark room
 
-
+int before;
 
 /////////////////////////////////////////////////////////////////////////////////////////
 //                                                                                     //
