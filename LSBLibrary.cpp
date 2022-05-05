@@ -130,6 +130,7 @@ void Board::ledBlinkAll(int duration) {
  * @param duration int
  */
 void Board::fadeUp(uint8_t pin, int duration) {
+    if (duration >= 1000) duration = 999;
     for (float fractionOn = 0; fractionOn < 1; fractionOn += fadingStepSize) {
         pwm(pin, gammaCorrect(fractionOn) * 10000);
         updateFadingStepSize(duration);
@@ -144,6 +145,7 @@ void Board::fadeUp(uint8_t pin, int duration) {
  * @param duration int
  */
 void Board::fadeDown(uint8_t pin, int duration) {
+    if (duration >= 1000) duration = 999;
     for (float fractionOn = 1; fractionOn > 0; fractionOn -= fadingStepSize) {
         pwm(pin, gammaCorrect(fractionOn) * 10000);
         updateFadingStepSize(duration);
@@ -156,6 +158,7 @@ void Board::fadeDown(uint8_t pin, int duration) {
  * @param duration int
  */
 void Board::fadeUpAll(int duration) {
+    if (duration >= 1000) duration = 999;
     for (float fractionOn = 0; fractionOn < 1; fractionOn += fadingStepSize) {
         allPWM(gammaCorrect(fractionOn) * 10000);
         updateFadingStepSize(duration);
@@ -168,6 +171,7 @@ void Board::fadeUpAll(int duration) {
  * @param duration int
  */
 void Board::fadeDownAll(int duration) {
+    if (duration >= 1000) duration = 999;
     for (float fractionOn = 1; fractionOn > 0; fractionOn -= fadingStepSize) {
         allPWM(gammaCorrect(fractionOn) * 10000);
         updateFadingStepSize(duration);
