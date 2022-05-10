@@ -67,9 +67,9 @@ void code() {
 ```
 
 ```c
-void Board::arrayLedBlink(uint8_t pins[], int duration)
+void Board::arrayLedBlink(uint8_t pins[], int duration, int size)
 ```
-Blinks all LEDs in the given array for the given duration (in milliseconds).
+Blinks all LEDs in the given array with the given size for the given duration (in milliseconds).
 
 Example: 
 
@@ -81,7 +81,7 @@ Board LSB(coveredVal, darkVal, A2);
 void code() {
   uint8_t pins[] = {1, 2, 3, 4};
   // Blinks pins 1, 2, 3, and 4 for 3 seconds.
-  LSB.ledBlink(pins, 3000); // note the removal of the brackets
+  LSB.ledBlink(pins, 3000, 4); // note the removal of the brackets
 }
 ```
 
@@ -160,9 +160,9 @@ void code() {
 ```
 
 ```c
-void Board::fadeUpArray(uint8_t pins[], int duration)
+void Board::fadeUpArray(uint8_t pins[], int duration, int size)
 ```
-Fades up all pins in the given array for the given duration (in milliseconds).
+Fades up all pins in the given array of the given size for the given duration (in milliseconds).
 
 Example:
 
@@ -174,14 +174,14 @@ Board LSB(coveredVal, darkVal, A2);
 void code() {
   uint8_t pins[] = {5, 4, 3, 2, 1};
   // Fades up pins 5, 4, 3, 2, and 1 for 0.2 seconds.
-  LSB.fadeUpAll(pins, 200);
+  LSB.fadeUpAll(pins, 200, 5);
 }
 ```
 
 ```c
-void Board::fadeUpArray(uint8_t pins[], int duration)
+void Board::fadeUpArray(uint8_t pins[], int duration, int size)
 ```
-Fades down all pins in the given array for the given duration (in milliseconds).
+Fades down all pins in the given array of the given size for the given duration (in milliseconds).
 
 Example:
 
@@ -193,6 +193,6 @@ Board LSB(coveredVal, darkVal, A2);
 void code() {
   uint8_t pins[] = {5, 4, 3, 2, 1};
   // Fades down pins 5, 4, 3, 2, and 1 for 0.2 seconds.
-  LSB.fadeDownArray(pins, 200);
+  LSB.fadeDownArray(pins, 200, 5);
 }
 ```
