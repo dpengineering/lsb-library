@@ -19,24 +19,25 @@ public:
 
   //Useful led blink/fade functions
 
-  void ledBlink(uint8_t pin, int duration);
-  void ledBlinkAll(int duration);
+  void ledBlink(uint8_t pin, unsigned int duration);
+  void ledBlinkAll(unsigned int duration);
 
-  void fadeUp(uint8_t pin, int duration);
-  void fadeDown(uint8_t pin, int duration);
-  void fadeUpAll(int duration);
-  void fadeDownAll(int duration);
+  void fadeUp(uint8_t pin, unsigned int duration);
+  void fadeDown(uint8_t pin, unsigned int duration);
+  void fadeUpAll(unsigned int duration);
+  void fadeDownAll(unsigned int duration);
 
   //Array-based blink/fade functions
-  void arrayLedBlink(uint8_t pins[], int duration, size_t arrsize);
-  void fadeUpArray(uint8_t pins[], int duration, size_t arrsisze);
-  void fadeDownArray(uint8_t pins[], int duration, size_t arrsize);
+  void arrayLedBlink(uint8_t pins[], unsigned int duration, size_t arrsize);
+  void fadeUpArray(uint8_t pins[], unsigned int duration, size_t arrsisze);
+  void fadeDownArray(uint8_t pins[], unsigned int duration, size_t arrsize);
 
   //QOL functions
   void turnOnAll();
   void turnOffAll();
   void arrayOn(uint8_t arr[], size_t arrsize);
   void arrayOff(uint8_t arr[], size_t arrsize);
+  void printSensorValue();
   int sensorValue();
 
 private:

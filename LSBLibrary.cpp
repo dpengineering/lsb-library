@@ -104,7 +104,7 @@ void Board::blinkThing() {
  * @param pin int
  * @param duration uint8_t
  */
-void Board::ledBlink(uint8_t pin, int duration) {
+void Board::ledBlink(uint8_t pin, unsigned int duration) {
     digitalWrite(pin, HIGH);
     DPEADelay(duration);
     digitalWrite(pin, LOW);
@@ -115,7 +115,7 @@ void Board::ledBlink(uint8_t pin, int duration) {
  * 
  * @param duration int
  */
-void Board::ledBlinkAll(int duration) {
+void Board::ledBlinkAll(unsigned int duration) {
     turnOnAll();
     DPEADelay(duration);
     turnOffAll();
@@ -129,7 +129,7 @@ void Board::ledBlinkAll(int duration) {
  * @param pin uint8_t
  * @param duration int
  */
-void Board::fadeUp(uint8_t pin, int duration) {
+void Board::fadeUp(uint8_t pin, unsigned int duration) {
     if (duration >= 1000) duration = 999;
     for (float fractionOn = 0; fractionOn < 1; fractionOn += fadingStepSize) {
         pwm(pin, gammaCorrect(fractionOn) * 10000);
@@ -144,7 +144,7 @@ void Board::fadeUp(uint8_t pin, int duration) {
  * @param pin uint8_t
  * @param duration int
  */
-void Board::fadeDown(uint8_t pin, int duration) {
+void Board::fadeDown(uint8_t pin, unsigned int duration) {
     if (duration >= 1000) duration = 999;
     for (float fractionOn = 1; fractionOn > 0; fractionOn -= fadingStepSize) {
         pwm(pin, gammaCorrect(fractionOn) * 10000);
@@ -157,7 +157,7 @@ void Board::fadeDown(uint8_t pin, int duration) {
  * 
  * @param duration int
  */
-void Board::fadeUpAll(int duration) {
+void Board::fadeUpAll(unsigned int duration) {
     if (duration >= 1000) duration = 999;
     for (float fractionOn = 0; fractionOn < 1; fractionOn += fadingStepSize) {
         allPWM(gammaCorrect(fractionOn) * 10000);
@@ -170,7 +170,7 @@ void Board::fadeUpAll(int duration) {
  * 
  * @param duration int
  */
-void Board::fadeDownAll(int duration) {
+void Board::fadeDownAll(unsigned int duration) {
     if (duration >= 1000) duration = 999;
     for (float fractionOn = 1; fractionOn > 0; fractionOn -= fadingStepSize) {
         allPWM(gammaCorrect(fractionOn) * 10000);
@@ -187,7 +187,7 @@ void Board::fadeDownAll(int duration) {
  * @param duration int
  * @param arrsize size_t
  */
-void Board::arrayLedBlink(uint8_t pins[], int duration, size_t arrsize) {
+void Board::arrayLedBlink(uint8_t pins[], unsigned int duration, size_t arrsize) {
     arrayOn(pins, arrsize);
     DPEADelay(duration);
     arrayOff(pins, arrsize);
@@ -200,7 +200,7 @@ void Board::arrayLedBlink(uint8_t pins[], int duration, size_t arrsize) {
  * @param duration int
  * @param arrsize size_t
  */
-void Board::fadeUpArray(uint8_t pins[], int duration, size_t arrsize) {
+void Board::fadeUpArray(uint8_t pins[], unsigned int duration, size_t arrsize) {
     for (float fractionOn = 0; fractionOn < 1; fractionOn += fadingStepSize) {
         arrPWM(pins, gammaCorrect(fractionOn) * 10000, arrsize);
         updateFadingStepSize(duration);
@@ -214,7 +214,7 @@ void Board::fadeUpArray(uint8_t pins[], int duration, size_t arrsize) {
  * @param duration int
  * @param arrsize size_t
  */
-void Board::fadeDownArray(uint8_t pins[], int duration, size_t arrsize) {
+void Board::fadeDownArray(uint8_t pins[], unsigned int duration, size_t arrsize) {
     for (float fractionOn = 1; fractionOn > 0; fractionOn -= fadingStepSize) {
         arrPWM(pins, gammaCorrect(fractionOn) * 10000, arrsize);
         updateFadingStepSize(duration);
@@ -248,7 +248,11 @@ void Board::arrayOff(uint8_t arr[], size_t size) {
     }
 }
 
-int sensorValue() {
+void Board::printSensorValue() {
+    Serial.println(sensorValue());
+}
+
+int Board::sensorValue() {
     int a = analogRead(A2);
     return a;
 }
@@ -302,7 +306,7 @@ void Board::pinsIn() {
     }
 }
 
-void Board::updateFadingStepSize(int duration) {
+void Board::updateFadingStepSize(unsigned int duration) {
     float knobRatio = 750 / 768; 
     float stepsOfDuration = duration * (1 - knobRatio) / 10;
     fadingStepSize = 1 / stepsOfDuration;

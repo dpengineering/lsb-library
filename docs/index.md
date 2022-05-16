@@ -92,6 +92,8 @@ void Board::fadeUp(uint8_t pin, int duration)
 ```
 Fades up the given pin for the given duration (in milliseconds).
 
+**Precondition: 0 < duration < 1000**
+
 Example:
 
 ```c
@@ -109,6 +111,8 @@ void code() {
 void Board::fadeDown(uint8_t pin, int duration)
 ```
 Fades down the given pin for the given duration (in milliseconds).
+
+**Precondition: 0 < duration < 1000**
 
 Example:
 
@@ -128,6 +132,8 @@ void Board::fadeUpAll(int duration)
 ```
 Fades up all pins for the given duration (in milliseconds).
 
+**Precondition: 0 < duration < 1000**
+
 Example: 
 
 ```c
@@ -145,6 +151,8 @@ void code() {
 void Board::fadeDownAll(int duration)
 ```
 Fades down all pins for the given duration (in millinseconds).
+
+**Precondition: 0 < duration < 1000**
 
 Example:
 
@@ -164,6 +172,8 @@ void Board::fadeUpArray(uint8_t pins[], int duration, int size)
 ```
 Fades up all pins in the given array of the given size for the given duration (in milliseconds).
 
+**Precondition: 0 < duration < 1000**
+
 Example:
 
 ```c
@@ -182,6 +192,8 @@ void code() {
 void Board::fadeUpArray(uint8_t pins[], int duration, int size)
 ```
 Fades down all pins in the given array of the given size for the given duration (in milliseconds).
+
+**Precondition: 0 < duration < 1000**
 
 Example:
 
