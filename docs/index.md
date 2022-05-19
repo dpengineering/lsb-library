@@ -49,7 +49,7 @@ void code() {
   LSB.ledBlink(3, 2000);
 }
 ```
-
+---
 ```c
 void Board::ledBlinkAll(int duration)
 ```
@@ -67,7 +67,7 @@ void code() {
   LSB.ledBlinkAll(1000);
 }
 ```
-
+---
 ```c
 void Board::arrayLedBlink(uint8_t pins[], int duration, int size)
 ```
@@ -94,7 +94,7 @@ void Board::fadeUp(uint8_t pin, int duration)
 ```
 Fades up the given pin for the given duration (in milliseconds).
 
-**Precondition: 0 < duration < 1000**
+
 
 Example:
 
@@ -108,13 +108,13 @@ void code() {
   LSB.fadeUp(3, 2000);
 }
 ```
-
+---
 ```c
 void Board::fadeDown(uint8_t pin, int duration)
 ```
 Fades down the given pin for the given duration (in milliseconds).
 
-**Precondition: 0 < duration < 1000**
+
 
 Example:
 
@@ -128,13 +128,13 @@ void code() {
   LSB.fadeDown(4, 500);
 }
 ```
-
+---
 ```c
 void Board::fadeUpAll(int duration)
 ```
 Fades up all pins for the given duration (in milliseconds).
 
-**Precondition: 0 < duration < 1000**
+
 
 Example: 
 
@@ -148,13 +148,13 @@ void code() {
   LSB.fadeUpAll(1000);
 }
 ```
-
+---
 ```c
 void Board::fadeDownAll(int duration)
 ```
 Fades down all pins for the given duration (in millinseconds).
 
-**Precondition: 0 < duration < 1000**
+
 
 Example:
 
@@ -168,13 +168,13 @@ void code() {
   LSB.fadeDownAll(1000);
 }
 ```
-
+---
 ```c
 void Board::fadeUpArray(uint8_t pins[], int duration, int size)
 ```
 Fades up all pins in the given array of the given size for the given duration (in milliseconds).
 
-**Precondition: 0 < duration < 1000**
+
 
 Example:
 
@@ -186,16 +186,16 @@ Board LSB(coveredVal, darkVal, A2);
 void code() {
   uint8_t pins[] = {5, 4, 3, 2, 1};
   // Fades up pins 5, 4, 3, 2, and 1 for 0.2 seconds.
-  LSB.fadeUpAll(pins, 200, 5);
+  LSB.fadeUpArray(pins, 200, 5);
 }
 ```
-
+---
 ```c
-void Board::fadeUpArray(uint8_t pins[], int duration, int size)
+void Board::fadeDownArray(uint8_t pins[], int duration, int size)
 ```
 Fades down all pins in the given array of the given size for the given duration (in milliseconds).
 
-**Precondition: 0 < duration < 1000**
+
 
 Example:
 
