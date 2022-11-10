@@ -6,7 +6,7 @@ permalink: /maintanence/
 
 ### Note to future maintainers
 
-This is a portion of the website designed to detail the inner workings of each function to make the library more maintainable in the future. This is not designed to detail the usage of the library. For that, see the [home page](https://tarekelkurjie.github.io/lsb-library/) of the site.
+This is a portion of the website designed to detail the inner workings of each function to make the library more maintainable in the future. This is not designed to detail the usage of the library. For that, see the [home page](https://dpengineering.github.io/lsb-library/) of the site.
 
 ## Board class
 

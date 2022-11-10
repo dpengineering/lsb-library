@@ -6,7 +6,7 @@ First, navigate to the Class Examples folder. Then, navigate to the programming 
 
 Open up the copied folder and double click on the file called 'YourName_LuminismShadowBox.ino'. This should open up the Arduino IDE. Now, you're ready to get started. You can start writing your code in the ```code()``` function. ***DO NOT*** alter the contents of ANY other function in the program unless strictly instructed to do so.
 
-Those looking to understand the inner workings of the library or maintain it visit [here](https://tarekelkurjie.github.io/lsb-library/maintanence/).
+Those looking to understand the inner workings of the library or maintain it visit [here](https://dpengineering.github.io/lsb-library/maintanence/).
 
 ## Quality of Life/Maintanence
 
